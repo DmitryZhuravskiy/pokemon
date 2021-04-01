@@ -14,9 +14,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var initialState = {
-  pokemon: "pikachu",
+  pokemon: "metapod",
   pokemonData: [],
-  pokemonType: ""
+  url: "https://pokeapi.co/api/v2/pokemon/metapod"
 };
 
 var pokemonReducer = function pokemonReducer() {
@@ -25,8 +25,10 @@ var pokemonReducer = function pokemonReducer() {
 
   switch (action.type) {
     case _pokemonTypes.HANDLE_CHANGE:
+      console.log("https://pokeapi.co/api/v2/pokemon/".concat(action.pokemon));
       return _objectSpread({}, state, {
-        pokemon: action.pokemon
+        pokemon: action.pokemon,
+        url: "https://pokeapi.co/api/v2/pokemon/".concat(action.pokemon)
       });
 
     case _pokemonTypes.HANDLE_SUBMIT:

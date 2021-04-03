@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
-import { handleChange, getPokemon } from "../redux";
+import { handleChange, getPokemon, handleSubmit } from "../redux";
 import React from 'react';
 
-function PokedexContainer({ pokemon, pokemonData, url, handleChange, getPokemon }) {
-
+function PokedexContainer({ pokemon, pokemonData, urlAdress, handleChange, getPokemon, handleSubmit}) {
     return (<div className="pokedex">
-        <form onSubmit={(e, url) => getPokemon(e, url)}>
+        <form className="searching-form" onSubmit={(e) => getPokemon(e)} value={urlAdress}>
             <label>
-                <input type="text" onChange={(e) => handleChange(e)} placeholder="Enter a name of pokemon" value={pokemon} />
+                <input type="text" onChange={(e) => handleChange(e)}
+                    placeholder="Enter a name of pokemon" value={pokemon} />
+                <input type="submit" value="Give Me A Pokemon"/>
+                <br />
             </label>
         </form>
         {
@@ -60,15 +62,15 @@ const mapStateToProps = (state) => {
     return {
         pokemon: state.pokemon.pokemon,
         pokemonData: state.pokemon.pokemonData,
-        url: state.pokemon.url,
+        urlAdress: state.pokemon.urlAdress,
     }
 }
 
 const mapDispatchToProps = (dispatch) => ({
     handleChange: (e) => dispatch(handleChange(e)),
-    getPokemon: (pokemon) => dispatch(getPokemon(pokemon)),
+    getPokemon: (e) => dispatch(getPokemon(e)),
+    handleSubmit: (pokemonData) => dispatch(handleSubmit(pokemonData)),
 })
-
 
 export default connect(
     mapStateToProps,

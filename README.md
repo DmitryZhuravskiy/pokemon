@@ -1,6 +1,6 @@
 # Pokemon
 
-Рабочий проект для обкатывания Typescript.
+Рабочий проект для обкатывания Typescript и Redux-Toolkit.
 
 
 
